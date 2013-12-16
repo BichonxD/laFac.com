@@ -1,6 +1,6 @@
 package laFac;
 
-public class Hightech extends Produit
+public abstract class Hightech extends Produit
 {
-	
+	private int tempsGarantie;
 }
