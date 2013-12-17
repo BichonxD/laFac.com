@@ -2,16 +2,17 @@ package laFac;
 
 public class Adherent extends Statut
 {
-	private int nbPtsFidelite;
+
+	private CarteFidelite carteFid;
 	
 	public Adherent()
 	{
-		nbPtsFidelite = 0;
+		carteFid = new CarteFidelite();
 	}
 	
 	public String toString()
 	{
-		return super.toString() + "\nNombre de Points de Fidelite : " + nbPtsFidelite;
+		return super.toString() + carteFid; //pourquoi super?
 	}
 	
 }
