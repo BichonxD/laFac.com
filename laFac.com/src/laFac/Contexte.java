@@ -32,9 +32,14 @@ public final class Contexte
 	/** L'initialisation des personnes faisant vivre le site */
 	public void initPersonne()
 	{
-		listePersonne.add(new Personne("Manuel Sanchez", "manuel@rigoleunpeu.fr"));
+		listePersonne.add(new Personne("Manuel Sanchez", "manuel@rigoleunpeu.fr", new Visiteur()));
 		listePersonne.add(new Personne("Justine PetiteGoutte", "justine@pttegoutte.fr"));
 		listePersonne.add(new Personne("Ervin PetiteGoutte", "ervin@pttegoutte.fr"));
+		
+		listePersonne.add(new Personne("Raoul alacavaplus", "raaaah@tatouille.fr", new Employe()));
+		listePersonne.add(new Personne("Jose ventrerlaligo", "Jose@plucher.fr", new Employe()));
+		
+		listePersonne.add(new Personne("Jessica Scroutepourmidi", "JessicaScroutepourmidi@gfaim.fr", new Adherent()));
 	}
 	
 	public String toString()

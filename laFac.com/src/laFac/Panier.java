@@ -14,6 +14,15 @@ public class Panier
 		listProduits = new ArrayList<Produit>();
 	}
 	
+	public void ajoutProduit(Produit p)
+	{
+		if(p != null)
+		{
+			listProduits.add(p);
+		}
+		else System.out.println("Impossible d'ajouter au panier, produit inexistant");
+	}
+	
 	public String toString()
 	{
 		String s = new String();
