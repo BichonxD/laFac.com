@@ -2,18 +2,17 @@ package laFac;
 
 public class Tablette extends Hightech
 {
+	private String marque;
 	
-	
-	@Override
-	public void setOffreProduit(OffreProduit offre)
+	public Tablette(double prix, double reductionEmploye, int ptsFidelite, int stock, int tempsGarantie, String marque)
 	{
-		this.offre = offre;
+		super("Tablette " + marque, prix, reductionEmploye, ptsFidelite, tempsGarantie, stock);
+		this.marque = marque;
 	}
 	
-	@Override
-	public OffreProduit getOffreProduit()
+	public String toString()
 	{
-		return offre;
+		return "TABLETTE : \nMarque : " + marque + "\n" + super.toString();
 	}
 	
 }
