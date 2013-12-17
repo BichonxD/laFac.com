@@ -1,9 +1,8 @@
 package laFac;
 
 import java.util.ArrayList;
-import java.util.Observable;
 
-public class Panier extends Observable
+public class Panier
 {
 	private String date;
 	private ArrayList<Produit> listProduits;

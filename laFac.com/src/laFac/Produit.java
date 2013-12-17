@@ -1,5 +1,7 @@
 package laFac;
 
+import java.util.ArrayList;
+
 public abstract class Produit
 {
 	protected String nom;
@@ -7,7 +9,7 @@ public abstract class Produit
 	protected double reductionEmploye;
 	protected int ptsFidelite;
 	protected int stock;
-	protected OffreProduit offre;
+	protected ArrayList<Offre> offre;
 	protected NomCategorie categorie;
 	
 	public Produit(String nom, double prix, double reductionEmploye, int ptsFidelite, int stock)
@@ -17,7 +19,7 @@ public abstract class Produit
 		this.reductionEmploye = reductionEmploye;
 		this.ptsFidelite = ptsFidelite;
 		this.stock = stock;
-		offre = null;
+		offre = new ArrayList<Offre>();
 	}
 	
 	/** Remonte une erreur si la catégorie du produit n'est pas elligible au promotion */

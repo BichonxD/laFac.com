@@ -15,13 +15,13 @@ public abstract class Hightech extends Produit
 	@Override
 	public void setOffreProduit(OffreProduit offre) throws Erreur
 	{
-		this.offre = offre;
+		this.offre.add(offre);
 	}
 	
 	@Override
 	public OffreProduit getOffreProduit()
 	{
-		return offre;
+		return null;
 	}
 	
 	public String toString()
@@ -29,10 +29,15 @@ public abstract class Hightech extends Produit
 		String s = new String();
 		s = super.toString() + "\nGarantie : " + tempsGarantie + " ans";
 		
-		if(offre != null)
-			s = s + offre.toString();
-		else
+		if(offre.isEmpty())
 			s = s + "\nAucune offre promotionnelle actuellement.";
+		else
+		{
+			for(Offre offr : offre)
+			{
+					s = s + offr.toString();
+			}
+		}
 		
 		return s;
 	}

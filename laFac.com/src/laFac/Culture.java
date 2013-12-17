@@ -14,7 +14,7 @@ public abstract class Culture extends Produit
 	 * pour que les sous-classes ne puissent la redéfinir.
 	 */
 	@Override
-	public final void setOffreProduit(OffreProduit offre) throws Erreur
+	public void setOffreProduit(OffreProduit offre) throws Erreur
 	{
 		throw new Erreur("Les objets de la Catégorie Culture ne sont pas elligibles à des offres promotionnelles.");
 	}
@@ -24,7 +24,7 @@ public abstract class Culture extends Produit
 	 * redéfinie comme final pour que les sous-classes ne puissent la redéfinir.
 	 */
 	@Override
-	public final OffreProduit getOffreProduit()
+	public OffreProduit getOffreProduit()
 	{
 		return null;
 	}
@@ -33,11 +33,7 @@ public abstract class Culture extends Produit
 	{
 		String s = new String();
 		s = super.toString();
-		
-		if(offre != null)
-			s = s + offre.toString();
-		else
-			s = s + "\nCategorie non elligible aux offres promotionnelles.";
+		s = s + "\nCategorie non elligible aux offres promotionnelles.";
 		
 		return s;
 	}
