@@ -4,9 +4,14 @@ public abstract class Statut
 {
 	private NomStatut nomStat;
 	
-	public Statut()
+	protected Statut()
 	{
 		nomStat = NomStatut.Visiteur;
+	}
+	
+	protected Statut(NomStatut statut)
+	{
+		nomStat = statut;
 	}
 	
 	public String toString()

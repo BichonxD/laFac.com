@@ -7,12 +7,13 @@ public class Adherent extends Statut
 	
 	public Adherent()
 	{
+		super(NomStatut.Adherent);
 		carteFid = new CarteFidelite();
 	}
 	
 	public String toString()
 	{
-		return super.toString() + carteFid; //pourquoi super?
+		return super.toString() + carteFid;
 	}
 	
 }

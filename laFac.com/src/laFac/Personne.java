@@ -19,6 +19,12 @@ public class Personne
 		pan = new Panier();
 	}
 	
+	public Personne(String nom, String adresse, Statut statut)
+	{
+		this(nom, adresse);
+		stat = statut;
+	}
+	
 	public static int getNewID()
 	{
 		return currentID++;
