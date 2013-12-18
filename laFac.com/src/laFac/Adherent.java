@@ -1,5 +1,7 @@
 package laFac;
 
+import java.util.ArrayList;
+
 public class Adherent extends Statut
 {
 
@@ -14,6 +16,13 @@ public class Adherent extends Statut
 	public String toString()
 	{
 		return super.toString() + carteFid;
+	}
+
+	@Override
+	public ArrayList<Offre> getContexteStatut()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

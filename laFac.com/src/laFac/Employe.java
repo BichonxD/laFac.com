@@ -1,5 +1,7 @@
 package laFac;
 
+import java.util.ArrayList;
+
 public class Employe extends Statut
 {
 	private OffreEmploye offre;
@@ -12,5 +14,12 @@ public class Employe extends Statut
 	public String toString()
 	{
 		return super.toString();
+	}
+
+	@Override
+	public ArrayList<Offre> getContexteStatut()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -2,7 +2,7 @@ package laFac;
 
 public abstract class Hightech extends Produit
 {
-	private int tempsGarantie;
+	protected int tempsGarantie;
 	
 	public Hightech(String nom, double prix, int stock, boolean estElligibleAOffreProduit , int tempsGarantie)
 	{

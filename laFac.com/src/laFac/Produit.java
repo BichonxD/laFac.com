@@ -26,6 +26,16 @@ public abstract class Produit
 		return estElligibleAOffreProduit;
 	}
 	
+	public String getNom()
+	{
+		return nom;
+	}
+	
+	public double getPrix()
+	{
+		return prix;
+	}
+	
 	public void setStock(int stock)
 	{
 		this.stock = stock;

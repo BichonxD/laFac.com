@@ -1,5 +1,7 @@
 package laFac;
 
+import java.util.ArrayList;
+
 public abstract class Statut
 {
 	private NomStatut nomStat;
@@ -13,6 +15,8 @@ public abstract class Statut
 	{
 		nomStat = statut;
 	}
+	
+	public abstract ArrayList<Offre> getContexteStatut();
 	
 	public String toString()
 	{
