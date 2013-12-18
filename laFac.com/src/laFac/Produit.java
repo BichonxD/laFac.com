@@ -1,32 +1,30 @@
 package laFac;
 
-import java.util.ArrayList;
-
 public abstract class Produit
 {
 	protected String nom;
 	protected double prix;
-	protected double reductionEmploye;
-	protected int ptsFidelite;
 	protected int stock;
-	protected ArrayList<Offre> offre;
+	protected boolean estElligibleAOffreProduit;
 	protected NomCategorie categorie;
 	
-	public Produit(String nom, double prix, double reductionEmploye, int ptsFidelite, int stock)
+	public Produit(String nom, double prix, int stock, boolean estElligibleAOffreProduit)
 	{
 		this.nom = nom;
 		this.prix = prix;
-		this.reductionEmploye = reductionEmploye;
-		this.ptsFidelite = ptsFidelite;
 		this.stock = stock;
-		offre = new ArrayList<Offre>();
+		this.estElligibleAOffreProduit = estElligibleAOffreProduit;
 	}
 	
-	/** Remonte une erreur si la catégorie du produit n'est pas elligible au promotion */
-	public abstract void setOffreProduit(OffreProduit offre) throws Erreur;
+	public void setEstElligibleAOffreProduit(boolean estElligibleAOffreProduit)
+	{
+		this.estElligibleAOffreProduit = estElligibleAOffreProduit;
+	}
 	
-	/** Renvoie l'offre produit disponible pour le produit ou null si aucune offre n'existe */
-	public abstract OffreProduit getOffreProduit();
+	public boolean getEstElligibleAOffreProduit()
+	{
+		return estElligibleAOffreProduit;
+	}
 	
 	public void setStock(int stock)
 	{
@@ -41,12 +39,13 @@ public abstract class Produit
 	public String toString()
 	{
 		String s = new String();
-		s = "Nom Produit : " + nom + "\nPrix : " + prix + " €\nReduction pour les Employes : " + reductionEmploye + " €\nPoints de fidelite : " + ptsFidelite + "\nCategorie : " + categorie;
-		if(stock == 0)
-			s = s + "\nStock vide";
+		s = "Nom Produit : " + nom + "\nPrix : " + prix + " €\nCategorie : " + categorie;
+		if (stock == 0)
+			s = s + "\nRupture de stock.";
 		else
 			s = s + "\nEn stock : " + stock;
 		
 		return s;
 	}
+	
 }

@@ -5,9 +5,9 @@ public class Spectacles extends Culture
 	private String titre;
 	private String date;
 	
-	public Spectacles(double prix, double reductionEmploye, int ptsFidelite, int stock, String titre, String date)
+	public Spectacles(double prix, int stock, String titre, String date)
 	{
-		super(titre, prix, reductionEmploye, ptsFidelite, stock);
+		super(titre, prix, stock, true);
 		this.titre = titre;
 		this.date = date;
 	}

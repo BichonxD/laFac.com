@@ -4,9 +4,9 @@ public class Tablette extends Hightech
 {
 	private String marque;
 	
-	public Tablette(double prix, double reductionEmploye, int ptsFidelite, int stock, int tempsGarantie, String marque)
+	public Tablette(double prix, int stock, int tempsGarantie, String marque)
 	{
-		super("Tablette " + marque, prix, reductionEmploye, ptsFidelite, tempsGarantie, stock);
+		super("Tablette " + marque, prix, stock, true, tempsGarantie);
 		this.marque = marque;
 	}
 	

@@ -19,11 +19,12 @@ public final class Contexte
 	public void initMarketing()
 	{
 		/* Initialisation des produits */
-		listeProduit.add(new Livres(25, 0, 15, 0, "Toto à l'école des Charcutiers", "Toto"));
-		listeProduit.add(new Livres(15, 5, 30, 2000, "Toto et Martine", "Martine"));
-		listeProduit.add(new Spectacles(50, 10, 50, 50, "Toto est Figaro", "12 décembre 2012"));
-		listeProduit.add(new Spectacles(75, 0, 45, 250, "Toto attend Godot", "36 avril 2013"));
-		listeProduit.add(new Tablette(250, 40, 300, 5, 5000, "Comon"));
+		listeProduit.add(new Livres(25, 10, "Toto à l'école des Charcutiers", "Toto"));
+		listeProduit.add(new Livres(15, 2000, "Toto et Martine", "Martine"));
+		listeProduit.add(new Spectacles(50, 50, "Toto est Figaro", "12 décembre 2012"));
+		listeProduit.add(new Spectacles(75, 250, "Toto attend Godot", "36 avril 2013"));
+		listeProduit.add(new Tablette(250, 5000, 2, "Comon"));
+		listeProduit.add(new Tablette(400, 5000, 3, "Gogo Gadgeto"));
 		
 		/* Initialisation des offres */
 
@@ -47,19 +48,19 @@ public final class Contexte
 		String ret = new String();
 		
 		ret = "ENVIRONNEMENT\n--------------------\nListe des PRODUITS : \n-----";
-		for(Produit prod : listeProduit)
+		for (Produit prod : listeProduit)
 		{
 			ret += "\n" + prod.toString() + "\n-----";
 		}
 		
 		ret += "\n--------------------\nListe des OFFRES : \n-----";
-		for(Offre ofr : listeOffre)
+		for (Offre ofr : listeOffre)
 		{
 			ret += "\n" + ofr.toString() + "\n-----";
 		}
 		
 		ret += "\n--------------------\nListe des PERSONNES : \n-----";
-		for(Personne pers : listePersonne)
+		for (Personne pers : listePersonne)
 		{
 			ret += "\n" + pers.toString() + "\n-----";
 		}
