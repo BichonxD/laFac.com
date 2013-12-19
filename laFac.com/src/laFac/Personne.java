@@ -27,6 +27,26 @@ public class Personne
 		stat = statut;
 	}
 	
+	public void ajoutOberserver(Alerte al)
+	{
+		pan.addObserver(al);
+	}
+	
+	public void connexion(Statut statut)
+	{
+		this.stat = statut;
+	}
+	
+	public void deconnexion()
+	{
+		this.stat = new Visiteur();
+	}
+	
+	public String getNom()
+	{
+		return nom;
+	}
+	
 	public int getId()
 	{
 		return id;

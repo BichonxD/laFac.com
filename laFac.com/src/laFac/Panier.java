@@ -1,8 +1,9 @@
 package laFac;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Panier
+public class Panier extends Observable
 {
 	private String date;
 	private ArrayList<Produit> listProduits;
@@ -21,12 +22,23 @@ public class Panier
 		if (p != null)
 		{
 			listProduits.add(p);
+			this.notifyObservers();
 			return true;
 		} else
 		{
 			System.out.println("Impossible d'ajouter au panier, produit inexistant");
 			return false;
 		}
+	}
+	
+	public ArrayList<Produit> getListProduits()
+	{
+		return listProduits;
+	}
+	
+	public String getNomProprietaire()
+	{
+		return proprietaire.getNom();
 	}
 	
 	public double facturation()
@@ -68,6 +80,19 @@ public class Panier
 		// Avant de retourner ce que doit payer le Client on vide le panier
 		videPanier();
 		return coutAchat - coutReductionGenerale - coutReductionStatut;
+	}
+	
+	/**Renvoie le cout du panier sans prendre en compte les réductions eventullement possibles.*/
+	public double coutPanier()
+	{
+		double coutAchat = 0;
+		
+		for (Produit prod : listProduits)
+		{
+			coutAchat += prod.getPrix();
+		}
+		
+		return coutAchat;
 	}
 	
 	public void videPanier()
