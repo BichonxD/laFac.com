@@ -7,7 +7,9 @@ public final class Contexte
 {
 	private ArrayList<Personne> listePersonne;
 	private ArrayList<Produit> listeProduit;
-	private ArrayList<Offre> listeOffre;
+	private ArrayList<Offre> listeOffreGenerale;
+	private ArrayList<Offre> listeOffreEmploye;
+	private ArrayList<Offre> listeOffreFidelite;
 	/** Instance unique pré-initialisée */
 	private static Contexte INSTANCE = new Contexte();
 	private static int dateDuJour = 0;
@@ -16,7 +18,9 @@ public final class Contexte
 	{
 		listePersonne = new ArrayList<Personne>();
 		listeProduit = new ArrayList<Produit>();
-		listeOffre = new ArrayList<Offre>();
+		listeOffreGenerale = new ArrayList<Offre>();
+		listeOffreEmploye = new ArrayList<Offre>();
+		listeOffreFidelite = new ArrayList<Offre>();
 	}
 	
 	/** Point d'accès pour l'instance unique du singleton */
@@ -25,28 +29,28 @@ public final class Contexte
 		return INSTANCE;
 	}
 	
-	private void creationLivreOffreEmployeFidelite(double prix, int stock, String titre, String auteur, double reductionEmploye, double ptsFidelite)
+	private void creationLivreOffreEmployeFidelite(double prix, int stock, String titre, String auteur, double reductionEmploye, int ptsFidelite)
 	{
 		Livres l = new Livres(prix, stock, titre, auteur);
 		listeProduit.add(l);
-		listeOffre.add(new OffreEmploye(l, reductionEmploye));
-		//listeOffre.add(new OffreFlash(l, ptsFidelite));
+		listeOffreEmploye.add(new OffreEmploye(l, reductionEmploye));
+		listeOffreFidelite.add(new OffreFidelite(l, ptsFidelite));
 	}
 	
-	private void creationSpectacleOffreEmployeFidelite(double prix, int stock, String titre, String date, double reductionEmploye, double ptsFidelite)
+	private void creationSpectacleOffreEmployeFidelite(double prix, int stock, String titre, String date, double reductionEmploye, int ptsFidelite)
 	{
 		Spectacles l = new Spectacles(prix, stock, titre, date);
 		listeProduit.add(l);
-		listeOffre.add(new OffreEmploye(l, reductionEmploye));
-		//listeOffre.add(new OffreFlash(l, ptsFidelite));
+		listeOffreEmploye.add(new OffreEmploye(l, reductionEmploye));
+		listeOffreFidelite.add(new OffreFidelite(l, ptsFidelite));
 	}
 	
-	private void creationTabletteOffreEmployeFidelite(double prix, int stock, int tmpsGarantie, String marque, double reductionEmploye, double ptsFidelite)
+	private void creationTabletteOffreEmployeFidelite(double prix, int stock, int tmpsGarantie, String marque, double reductionEmploye, int ptsFidelite)
 	{
 		Tablette l = new Tablette(prix, stock, tmpsGarantie, marque);
 		listeProduit.add(l);
-		listeOffre.add(new OffreEmploye(l, reductionEmploye));
-		//listeOffre.add(new OffreFlash(l, ptsFidelite));
+		listeOffreEmploye.add(new OffreEmploye(l, reductionEmploye));
+		listeOffreFidelite.add(new OffreFidelite(l, ptsFidelite));
 	}
 	
 	/** L'initialisation de la partie marketing consiste à initialiser les produits et offres. */
@@ -62,17 +66,17 @@ public final class Contexte
 		
 		/* Initialisation des offres */
 		/* Offre Produits */
-		listeOffre.add(new OffreProduit(listeProduit.get(0), 0.25, 2));
-		listeOffre.add(new OffreProduit(listeProduit.get(2), 0.25, 2));
-		listeOffre.add(new OffreProduit(listeProduit.get(4), 0.25, 3));
+		listeOffreGenerale.add(new OffreProduit(listeProduit.get(0), 0.25, 2));
+		listeOffreGenerale.add(new OffreProduit(listeProduit.get(2), 0.25, 2));
+		listeOffreGenerale.add(new OffreProduit(listeProduit.get(4), 0.25, 3));
 		/* Offre Flash */
 		OffreFlash f = new OffreFlash(listeProduit.get(0), 0.25, 2);
-		listeOffre.add(f);
+		listeOffreGenerale.add(f);
 		f.addProduit(listeProduit.get(1));
 		ArrayList<Produit> tmp = new ArrayList<Produit>();
 		tmp.addAll(listeProduit);
-		listeOffre.add(new OffreFlash(tmp, 0.25, 2));
-		listeOffre.add(new OffreFlash(listeProduit.get(4), 0.25, 3));
+		listeOffreGenerale.add(new OffreFlash(tmp, 0.25, 2));
+		listeOffreGenerale.add(new OffreFlash(listeProduit.get(4), 0.25, 3));
 	}
 	
 	/** L'initialisation des personnes faisant vivre le site */
@@ -99,26 +103,74 @@ public final class Contexte
 		dateDuJour++;
 	}
 	
+	public static ArrayList<Offre> getListeOffreGenerale()
+	{
+		final ArrayList<Offre> listTmp = new ArrayList<Offre>();
+		listTmp.addAll(Contexte.getInstance().getLOffreGenerale());
+		return listTmp;
+	}
+	
+	public ArrayList<Offre> getLOffreGenerale()
+	{
+		return listeOffreEmploye;
+	}
+	
+	public static ArrayList<Offre> getListeOffreEmploye()
+	{
+		final ArrayList<Offre> listTmp = new ArrayList<Offre>();
+		listTmp.addAll(Contexte.getInstance().getLOffreEmploye());
+		return listTmp;
+	}
+	
+	public ArrayList<Offre> getLOffreEmploye()
+	{
+		return listeOffreEmploye;
+	}
+	
+	public static ArrayList<Offre> getListeOffreAdherent()
+	{
+		final ArrayList<Offre> listTmp = new ArrayList<Offre>();
+		listTmp.addAll(Contexte.getInstance().getLOffreFidelite());
+		return listTmp;
+	}
+	
+	public ArrayList<Offre> getLOffreFidelite()
+	{
+		return listeOffreFidelite;
+	}
+	
 	public String toString()
 	{
 		String ret = new String();
 		
-		ret = "ENVIRONNEMENT\n--------------------\nListe des PRODUITS : \n-----";
-		/*
-		 * for (Produit prod : listeProduit) { ret += "\n" + prod.toString() + "\n-----"; }
-		 */
-
-		ret += "\n--------------------\nListe des OFFRES : \n-----";
-		for (Offre ofr : listeOffre)
+		ret = "ENVIRONNEMENT\n--------------------\nListe des PRODUITS : \n-----";		
+		for (Produit prod : listeProduit)
 		{
-			ret += "\n" + ofr.toString() + "\nReduction possible : " + ofr.getReduction() + " €\n-----";
+			ret += "\n" + prod.toString() + "\n-----";
 		}
 		
-		/*
-		 * ret += "\n--------------------\nListe des PERSONNES : \n-----"; for (Personne pers : listePersonne) { ret
-		 * += "\n" + pers.toString() + "\n-----"; }
-		 */
-
+		ret += "\n--------------------\nListe des OFFRES : \n-----";
+		for (Offre ofr : listeOffreGenerale)
+		{
+			ret += "\n" + ofr.toString() + "\n-----";
+		}
+		
+		for (Offre ofr : listeOffreEmploye)
+		{
+			ret += "\n" + ofr.toString() + "\n-----";
+		}
+		
+		for (Offre ofr : listeOffreFidelite)
+		{
+			ret += "\n" + ofr.toString() + "\n-----";
+		}
+		
+		ret += "\n--------------------\nListe des PERSONNES : \n-----";
+		for (Personne pers : listePersonne)
+		{
+			ret += "\n" + pers.toString() + "\n-----";
+		}
+		
 		ret += "\n--------------------";
 		
 		return ret;
@@ -126,7 +178,11 @@ public final class Contexte
 	
 	public void testerEnvironnement()
 	{
-		
+		Personne p = listePersonne.get(0);
+		p.achat(listeProduit.get(0));
+		System.out.println("-----");
+		double paiement = p.paiement();
+		System.out.println("Le Client " + p.getId() + " a payé " + paiement + " €.");
 	}
 	
 	public static void main(String[] args)
@@ -134,7 +190,7 @@ public final class Contexte
 		Contexte environnement = Contexte.getInstance();
 		environnement.initMarketing();
 		environnement.initPersonne();
-		System.out.println(environnement.toString());
+		System.out.println(environnement.toString() + "\n");
 		
 		environnement.testerEnvironnement();
 		// System.out.println(environnement.toString());

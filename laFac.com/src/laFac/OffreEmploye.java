@@ -1,5 +1,7 @@
 package laFac;
 
+import java.util.ArrayList;
+
 public class OffreEmploye extends Offre
 {
 	
@@ -17,6 +19,17 @@ public class OffreEmploye extends Offre
 			return produits.get(0).getPrix() * reduction;
 		else
 			return 0;
+	}
+	
+	public boolean estElligiblePourPanier(final ArrayList<Produit> listProd)
+	{
+		for(Produit prod : listProd)
+		{
+			if(prod.equals(produits.get(0)))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	public String toString()

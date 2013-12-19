@@ -1,5 +1,7 @@
 package laFac;
 
+import java.util.ArrayList;
+
 public class Personne
 {
 	private String nom;
@@ -16,7 +18,7 @@ public class Personne
 		this.adresse = adresse;
 		this.id = getNewID();
 		stat = new Visiteur();
-		pan = new Panier();
+		pan = new Panier(this);
 	}
 	
 	public Personne(String nom, String adresse, Statut statut)
@@ -25,13 +27,46 @@ public class Personne
 		stat = statut;
 	}
 	
+	public int getId()
+	{
+		return id;
+	}
+	
 	public static int getNewID()
 	{
 		return currentID++;
+	}
+
+	public ArrayList<Offre> getListeOffreStatut()
+	{
+		return stat.getListeOffreStatut();
+	}
+	
+	public void miseAJourPtsFidelite(int ptsFidelite)
+	{
+		stat.miseAJourPtsFidelite(ptsFidelite);
+	}
+	
+	public double getReductionFixeFidelite()
+	{
+		return stat.getReductionFixeFidelite();
+	}
+	
+	public boolean achat(Produit prod)
+	{
+		System.out.println(nom + " ajoute à son panier : \n - " + prod.toStringPanier());
+		return pan.ajoutProduit(prod);
+	}
+	
+	public double paiement()
+	{
+		System.out.println(nom + " passe à la caisse !");
+		return pan.facturation();
 	}
 	
 	public String toString()
 	{
 		return "PERSONNE : \nNom : " + nom + "\nE-mail : " + adresse + "\nId : " + id + "\nStatut : " + stat.toString() + "\nPanier : " + pan.toString();
 	}
+	
 }

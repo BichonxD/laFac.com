@@ -15,4 +15,16 @@ public abstract class Offre
 	
 	public abstract double getReduction();
 	
+	public int getPtsFidelite()
+	{
+		return 0;
+	}
+	
+	public ArrayList<Produit> getProduits()
+	{
+		ArrayList<Produit> l = new ArrayList<Produit>();
+		l.addAll(produits);
+		return l;
+	}
+	
 }

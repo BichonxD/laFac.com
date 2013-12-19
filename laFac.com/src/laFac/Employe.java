@@ -4,22 +4,24 @@ import java.util.ArrayList;
 
 public class Employe extends Statut
 {
-	private OffreEmploye offre;
 	
 	public Employe()
 	{
 		super(NomStatut.Employe);
 	}
 	
-	public String toString()
+	public ArrayList<Offre> getListeOffreStatut()
 	{
-		return super.toString();
+		return Contexte.getListeOffreEmploye();
 	}
-
-	@Override
-	public ArrayList<Offre> getContexteStatut()
+	
+	public double getReductionFixeFidelite()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
+	
+	public void miseAJourPtsFidelite(int ptsFidelite)
+	{
+	}
+	
 }

@@ -4,12 +4,23 @@ import java.util.ArrayList;
 
 public class Visiteur extends Statut
 {
-
-	@Override
-	public ArrayList<Offre> getContexteStatut()
+	public Visiteur()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		super(NomStatut.Visiteur);
+	}
+	
+	public ArrayList<Offre> getListeOffreStatut()
+	{
+		return new ArrayList<Offre>();
+	}
+	
+	public double getReductionFixeFidelite()
+	{
+		return 0;
+	}
+	
+	public void miseAJourPtsFidelite(int ptsFidelite)
+	{
 	}
 	
 }

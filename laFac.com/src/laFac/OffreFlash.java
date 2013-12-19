@@ -43,6 +43,11 @@ public class OffreFlash extends Offre
 			produits.add(prod);
 	}
 	
+	public boolean estElligiblePourPanier(final ArrayList<Produit> listProd)
+	{
+		return listProd.containsAll(produits);
+	}
+	
 	public String toString()
 	{
 		String s = new String();
@@ -61,4 +66,5 @@ public class OffreFlash extends Offre
 		} else
 			return "OFFRE FLASH NON APPLICABLE";
 	}
+	
 }

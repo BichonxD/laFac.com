@@ -16,7 +16,11 @@ public abstract class Statut
 		nomStat = statut;
 	}
 	
-	public abstract ArrayList<Offre> getContexteStatut();
+	public abstract ArrayList<Offre> getListeOffreStatut();
+	
+	public abstract void miseAJourPtsFidelite(int ptsFidelite);
+	
+	public abstract double getReductionFixeFidelite();
 	
 	public String toString()
 	{

@@ -2,6 +2,7 @@ package laFac;
 
 public abstract class Produit
 {
+	//Le nom est supposé unique et sert donc de clé primaire
 	protected String nom;
 	protected double prix;
 	protected int stock;
@@ -43,7 +44,7 @@ public abstract class Produit
 	
 	public String toStringPanier()
 	{
-		return nom + ", " + prix + " €.";
+		return nom + "\t" + prix + " €";
 	}
 	
 	public String toString()
@@ -56,6 +57,21 @@ public abstract class Produit
 			s = s + "\nEn stock : " + stock;
 		
 		return s;
+	}
+	
+	public boolean equals(Object obj)
+	{
+		if (obj == null)
+			return false;
+		
+		try
+		{
+			Produit prod = (Produit) obj;
+			return this.nom.equals(prod.nom);
+		} catch (ClassCastException e)
+		{
+			return false;
+		}
 	}
 	
 }
