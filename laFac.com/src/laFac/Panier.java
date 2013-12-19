@@ -66,7 +66,7 @@ public class Panier
 		System.out.println(lAddition(coutAchat, coutReductionGenerale, coutReductionStatut, ptsFidelite));
 		
 		// Avant de retourner ce que doit payer le Client on vide le panier
-		
+		videPanier();
 		return coutAchat - coutReductionGenerale - coutReductionStatut;
 	}
 	
