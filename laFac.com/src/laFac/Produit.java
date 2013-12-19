@@ -2,7 +2,7 @@ package laFac;
 
 public abstract class Produit
 {
-	//Le nom est supposé unique et sert donc de clé primaire
+	//Le nom est suppose unique et sert donc de cle primaire
 	protected String nom;
 	protected double prix;
 	protected int stock;
@@ -44,13 +44,13 @@ public abstract class Produit
 	
 	public String toStringPanier()
 	{
-		return nom + "\t" + prix + " €";
+		return nom + "\t" + prix + " euros";
 	}
 	
 	public String toString()
 	{
 		String s = new String();
-		s = "Nom Produit : " + nom + "\nPrix : " + prix + " €\nCategorie : " + categorie;
+		s = "Nom Produit : " + nom + "\nPrix : " + prix + " euros\nCategorie : " + categorie;
 		if (stock == 0)
 			s = s + "\nRupture de stock.";
 		else

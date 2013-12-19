@@ -31,9 +31,9 @@ public class Alerte implements Observer
 		Panier pan = (Panier) arg0;
 		System.out.println("Dans l'alerte !");
 		if(pan.getListProduits().containsAll(combinaisonProduit))
-			System.out.println("-----\nALERTE\nLe panier de " + pan.getNomProprietaire() + " contient la combinaison recherchée.");
+			System.out.println("-----\nALERTE\nLe panier de " + pan.getNomProprietaire() + " contient la combinaison recherchee.");
 		if(pan.coutPanier() > seuilPanier)
-			System.out.println("-----\nALERTE\nLe panier de " + pan.getNomProprietaire() + " a depassé le seuil des " + seuilPanier + " €.\n-----");
+			System.out.println("-----\nALERTE\nLe panier de " + pan.getNomProprietaire() + " a depasse le seuil des " + seuilPanier + " euros.\n-----");
 	}
 	
 }
