@@ -1,8 +1,9 @@
 package laFac;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Panier
+public class Panier extends Observable
 {
 	private String date;
 	private ArrayList<Produit> listProduits;
@@ -27,6 +28,11 @@ public class Panier
 			System.out.println("Impossible d'ajouter au panier, produit inexistant");
 			return false;
 		}
+	}
+	
+	public ArrayList<Produit> getListProduits()
+	{
+		return listProduits;
 	}
 	
 	public double facturation()
