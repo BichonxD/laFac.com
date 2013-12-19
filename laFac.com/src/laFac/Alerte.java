@@ -6,24 +6,33 @@ import java.util.Observer;
 
 public class Alerte implements Observer
 {
-	private static int seuilPanier = 100;
-	private static ArrayList<Produit> combinaisonProduit;
+	private int seuilPanier;
+	private ArrayList<Produit> combinaisonProduit;
 	
 	public Alerte()
 	{
 		super();
+		seuilPanier = 0;
+		combinaisonProduit = new ArrayList<Produit>();
 	}
 	
-	public static void setCombinaisonProduit(ArrayList<Produit> combinaisonProd)
+	public void setCombinaisonProduit(ArrayList<Produit> combinaisonProduit)
 	{
-		combinaisonProduit = combinaisonProd;
+		this.combinaisonProduit.addAll(combinaisonProduit);
+	}
+	
+	public void setSeuilPanier(int seuilPanier)
+	{
+		this.seuilPanier = seuilPanier;
 	}
 	
 	public void update(Observable arg0, Object arg1)
 	{	
 		Panier pan = (Panier) arg0;
 		if(pan.getListProduits().containsAll(combinaisonProduit))
-			System.out.println("ALERTE :\nLE panier contient la combinaison indiquée");
+			System.out.println("-----\nALERTE\nLe panier de " + pan.getNomProprietaire() + " contient la combinaison recherchée.");
+		if(pan.coutPanier() > seuilPanier)
+			System.out.println("-----\nALERTE\nLe panier de " + pan.getNomProprietaire() + " a depassé le seuil des " + seuilPanier + " €.\n-----");
 	}
 	
 }

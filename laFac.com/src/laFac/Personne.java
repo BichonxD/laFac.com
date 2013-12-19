@@ -19,13 +19,22 @@ public class Personne
 		this.id = getNewID();
 		stat = new Visiteur();
 		pan = new Panier(this);
-		pan.addObserver(new Alerte());
 	}
 	
 	public Personne(String nom, String adresse, Statut statut)
 	{
 		this(nom, adresse);
 		stat = statut;
+	}
+	
+	public void ajoutOberserver(Alerte al)
+	{
+		pan.addObserver(al);
+	}
+	
+	public String getNom()
+	{
+		return nom;
 	}
 	
 	public int getId()

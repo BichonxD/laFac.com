@@ -10,6 +10,7 @@ public final class Contexte
 	private ArrayList<Offre> listeOffreGenerale;
 	private ArrayList<Offre> listeOffreEmploye;
 	private ArrayList<Offre> listeOffreFidelite;
+	private ArrayList<Alerte> listeAlerte;
 	/** Instance unique pré-initialisée */
 	private static Contexte INSTANCE = new Contexte();
 	private static int dateDuJour = 0;
@@ -21,6 +22,7 @@ public final class Contexte
 		listeOffreGenerale = new ArrayList<Offre>();
 		listeOffreEmploye = new ArrayList<Offre>();
 		listeOffreFidelite = new ArrayList<Offre>();
+		listeAlerte = new ArrayList<Alerte>();
 	}
 	
 	/** Point d'accès pour l'instance unique du singleton */
@@ -194,6 +196,21 @@ public final class Contexte
 		listePersonne.add(new Personne("Jessica Scroutepourmidi", "JessicaScroutepourmidi@gfaim.fr", new Adherent()));
 	}
 	
+	public void initAlerte()
+	{
+		for(Personne p : listePersonne)
+		{
+			Alerte al = new Alerte();
+			p.ajoutOberserver(al);
+			listeAlerte.add(al);
+			al.setSeuilPanier(100);
+			ArrayList<Produit> combinaisonProduit = new ArrayList<Produit>();
+			combinaisonProduit.add(listeProduit.get(0));
+			combinaisonProduit.add(listeProduit.get(1));
+			al.setCombinaisonProduit(combinaisonProduit);
+		}
+	}
+	
 	public void testerEnvironnement()
 	{
 		Personne p = listePersonne.get(5);
@@ -208,6 +225,7 @@ public final class Contexte
 		Contexte environnement = Contexte.getInstance();
 		environnement.initMarketing();
 		environnement.initPersonne();
+		environnement.initAlerte();
 		//System.out.println(environnement.toString() + "\n");
 		
 		environnement.testerEnvironnement();

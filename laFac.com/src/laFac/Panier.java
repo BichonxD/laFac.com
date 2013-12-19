@@ -35,6 +35,11 @@ public class Panier extends Observable
 		return listProduits;
 	}
 	
+	public String getNomProprietaire()
+	{
+		return proprietaire.getNom();
+	}
+	
 	public double facturation()
 	{
 		double coutAchat = 0;
@@ -74,6 +79,19 @@ public class Panier extends Observable
 		// Avant de retourner ce que doit payer le Client on vide le panier
 		videPanier();
 		return coutAchat - coutReductionGenerale - coutReductionStatut;
+	}
+	
+	/**Renvoie le cout du panier sans prendre en compte les réductions eventullement possibles.*/
+	public double coutPanier()
+	{
+		double coutAchat = 0;
+		
+		for (Produit prod : listProduits)
+		{
+			coutAchat += prod.getPrix();
+		}
+		
+		return coutAchat;
 	}
 	
 	public void videPanier()
