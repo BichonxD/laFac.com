@@ -1,7 +1,5 @@
 package laFac;
 
-import java.util.ArrayList;
-
 public class OffreProduit extends Offre
 {
 	// La date limite est défini en nombre de mise à jour du contexte.
@@ -27,15 +25,10 @@ public class OffreProduit extends Offre
 			return 0;
 	}
 	
-	public boolean estElligiblePourPanier(final ArrayList<Produit> listProd)
+	public boolean miseAJourDate()
 	{
-		for(Produit prod : listProd)
-		{
-			if(prod.equals(produits.get(0)))
-				return true;
-		}
-		
-		return false;
+		dateExpiration--;
+		return (dateExpiration > 0);
 	}
 	
 	public String toString()

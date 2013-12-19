@@ -53,45 +53,6 @@ public final class Contexte
 		listeOffreFidelite.add(new OffreFidelite(l, ptsFidelite));
 	}
 	
-	/** L'initialisation de la partie marketing consiste à initialiser les produits et offres. */
-	public void initMarketing()
-	{
-		/* Initialisation des produits */
-		creationLivreOffreEmployeFidelite(25, 10, "Toto à l'école des Charcutiers", "Toto", 0.5, 10);
-		creationLivreOffreEmployeFidelite(15, 2000, "Toto et Martine", "Martine", 0.5, 10);
-		creationSpectacleOffreEmployeFidelite(50, 50, "Toto est Figaro", "12 décembre 2012", 0.4, 25);
-		creationSpectacleOffreEmployeFidelite(75, 250, "Toto attend Godot", "36 avril 2013", 0.4, 25);
-		creationTabletteOffreEmployeFidelite(250, 5000, 2, "Comon", 0.25, 50);
-		creationTabletteOffreEmployeFidelite(400, 5000, 3, "Gogo Gadgeto", 0.25, 200);
-		
-		/* Initialisation des offres */
-		/* Offre Produits */
-		listeOffreGenerale.add(new OffreProduit(listeProduit.get(0), 0.25, 2));
-		listeOffreGenerale.add(new OffreProduit(listeProduit.get(2), 0.25, 2));
-		listeOffreGenerale.add(new OffreProduit(listeProduit.get(4), 0.25, 3));
-		/* Offre Flash */
-		OffreFlash f = new OffreFlash(listeProduit.get(0), 0.25, 2);
-		listeOffreGenerale.add(f);
-		f.addProduit(listeProduit.get(1));
-		ArrayList<Produit> tmp = new ArrayList<Produit>();
-		tmp.addAll(listeProduit);
-		listeOffreGenerale.add(new OffreFlash(tmp, 0.25, 2));
-		listeOffreGenerale.add(new OffreFlash(listeProduit.get(4), 0.25, 3));
-	}
-	
-	/** L'initialisation des personnes faisant vivre le site */
-	public void initPersonne()
-	{
-		listePersonne.add(new Personne("Manuel Sanchez", "manuel@rigoleunpeu.fr", new Visiteur()));
-		listePersonne.add(new Personne("Justine PetiteGoutte", "justine@pttegoutte.fr"));
-		listePersonne.add(new Personne("Ervin PetiteGoutte", "ervin@pttegoutte.fr"));
-		
-		listePersonne.add(new Personne("Raoul alacavaplus", "raaaah@tatouille.fr", new Employe()));
-		listePersonne.add(new Personne("Jose ventrerlaligo", "Jose@plucher.fr", new Employe()));
-		
-		listePersonne.add(new Personne("Jessica Scroutepourmidi", "JessicaScroutepourmidi@gfaim.fr", new Adherent()));
-	}
-	
 	public static int getDateDuJour()
 	{
 		return dateDuJour;
@@ -101,6 +62,24 @@ public final class Contexte
 	public void miseAJourDate()
 	{
 		dateDuJour++;
+		
+		for(Offre ofr : listeOffreGenerale)
+		{
+			if(!ofr.miseAJourDate())
+				listeOffreGenerale.remove(ofr);
+		}
+		
+		for(Offre ofr : listeOffreEmploye)
+		{
+			if(!ofr.miseAJourDate())
+				listeOffreGenerale.remove(ofr);
+		}
+		
+		for(Offre ofr : listeOffreFidelite)
+		{
+			if(!ofr.miseAJourDate())
+				listeOffreGenerale.remove(ofr);
+		}
 	}
 	
 	public static ArrayList<Offre> getListeOffreGenerale()
@@ -176,10 +155,49 @@ public final class Contexte
 		return ret;
 	}
 	
+	/** L'initialisation de la partie marketing consiste à initialiser les produits et offres. */
+	public void initMarketing()
+	{
+		/* Initialisation des produits */
+		creationLivreOffreEmployeFidelite(25, 10, "Toto à l'école des Charcutiers", "Toto", 0.5, 10);
+		creationLivreOffreEmployeFidelite(15, 2000, "Toto et Martine", "Martine", 0.5, 10);
+		creationSpectacleOffreEmployeFidelite(50, 50, "Toto est Figaro", "12 décembre 2012", 0.4, 25);
+		creationSpectacleOffreEmployeFidelite(75, 250, "Toto attend Godot", "36 avril 2013", 0.4, 25);
+		creationTabletteOffreEmployeFidelite(250, 5000, 2, "Comon", 0.25, 50);
+		creationTabletteOffreEmployeFidelite(400, 5000, 3, "Gogo Gadgeto", 0.25, 200);
+		
+		/* Initialisation des offres */
+		/* Offre Produits */
+		listeOffreGenerale.add(new OffreProduit(listeProduit.get(0), 0.25, 2));
+		listeOffreGenerale.add(new OffreProduit(listeProduit.get(2), 0.25, 2));
+		listeOffreGenerale.add(new OffreProduit(listeProduit.get(4), 0.25, 3));
+		/* Offre Flash */
+		OffreFlash f = new OffreFlash(listeProduit.get(0), 0.25, 2);
+		listeOffreGenerale.add(f);
+		f.addProduit(listeProduit.get(1));
+		ArrayList<Produit> tmp = new ArrayList<Produit>();
+		tmp.addAll(listeProduit);
+		listeOffreGenerale.add(new OffreFlash(tmp, 0.25, 2));
+		listeOffreGenerale.add(new OffreFlash(listeProduit.get(4), 0.25, 3));
+	}
+	
+	/** L'initialisation des personnes faisant vivre le site */
+	public void initPersonne()
+	{
+		listePersonne.add(new Personne("Manuel Sanchez", "manuel@rigoleunpeu.fr", new Visiteur()));
+		listePersonne.add(new Personne("Justine PetiteGoutte", "justine@pttegoutte.fr"));
+		listePersonne.add(new Personne("Ervin PetiteGoutte", "ervin@pttegoutte.fr"));
+		
+		listePersonne.add(new Personne("Raoul alacavaplus", "raaaah@tatouille.fr", new Employe()));
+		listePersonne.add(new Personne("Jose ventrerlaligo", "Jose@plucher.fr", new Employe()));
+		
+		listePersonne.add(new Personne("Jessica Scroutepourmidi", "JessicaScroutepourmidi@gfaim.fr", new Adherent()));
+	}
+	
 	public void testerEnvironnement()
 	{
-		Personne p = listePersonne.get(0);
-		p.achat(listeProduit.get(0));
+		Personne p = listePersonne.get(5);
+		p.achat(listeProduit.get(4));
 		System.out.println("-----");
 		double paiement = p.paiement();
 		System.out.println("Le Client " + p.getId() + " a payé " + paiement + " €.");
@@ -190,7 +208,7 @@ public final class Contexte
 		Contexte environnement = Contexte.getInstance();
 		environnement.initMarketing();
 		environnement.initPersonne();
-		System.out.println(environnement.toString() + "\n");
+		//System.out.println(environnement.toString() + "\n");
 		
 		environnement.testerEnvironnement();
 		// System.out.println(environnement.toString());

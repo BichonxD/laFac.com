@@ -43,9 +43,10 @@ public class OffreFlash extends Offre
 			produits.add(prod);
 	}
 	
-	public boolean estElligiblePourPanier(final ArrayList<Produit> listProd)
+	public boolean miseAJourDate()
 	{
-		return listProd.containsAll(produits);
+		dateExpiration--;
+		return (dateExpiration > 0);
 	}
 	
 	public String toString()

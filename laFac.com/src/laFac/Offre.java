@@ -27,4 +27,7 @@ public abstract class Offre
 		return l;
 	}
 	
+	/**Renvoie true si l'offre a encore raison d'exister, false sinon*/
+	public abstract boolean miseAJourDate();
+	
 }
