@@ -22,6 +22,7 @@ public class Panier extends Observable
 		if (p != null)
 		{
 			listProduits.add(p);
+			this.notifyObservers();
 			return true;
 		} else
 		{

@@ -32,6 +32,16 @@ public class Personne
 		pan.addObserver(al);
 	}
 	
+	public void connexion(Statut statut)
+	{
+		this.stat = statut;
+	}
+	
+	public void deconnexion()
+	{
+		this.stat = new Visiteur();
+	}
+	
 	public String getNom()
 	{
 		return nom;
