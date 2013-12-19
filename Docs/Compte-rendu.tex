@@ -1,6 +1,8 @@
 \documentclass{article}
 
+% Mise en page
 \usepackage[scale=0.75]{geometry}
+\setlength{\parskip}{1.5ex}
 
 % Langues
 \usepackage[french]{babel}
@@ -11,10 +13,37 @@
 \usepackage{graphicx}
 \usepackage{rotating}
 
+% Code source
+\usepackage{listings}
+\usepackage{color}
+
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true
+  tabsize=4,
+}
+
 % Titre
 \title{LaFac.com}
 \author{BOSOM - CHAUSSY - DELLOUVE}
-%\date{text}
+\date{20 décembre 2013}
 
 \begin{document}
 
@@ -27,12 +56,40 @@ Afin de travailler la conception de systèmes réels, nous avons créé un modé
 L'implémentation s'est faite en Java et nous devions répondre à plusieurs contraintes, à savoir un système de gestion de personnes, de produits et de différentes offres applicables.
 \vfill
 
-\newpage
+\clearpage
 
-\section*{Conception}
+\section*{Diagramme de classe}
 
-\subsection*{Diagramme de classe}
+La classe principale de notre projet est la classe Contexte.
+Il s'agit d'un \textbf{Singleton}, c'est-à-dire qu'il n'en existe qu'une seule instance dans le programme.
+Ce contexte représente, en quelques sorte, la base de donnée que possèderait un site réel.
+Si nous devions nous passer de celui-ci, nous basculerions les offres employés dans le statut \emph{Employe} qui deviendrait alors un \textbf{Singleton}.
+Nous ajouterions aussi un autre \textbf{Singleton} qui contiendrait les \emph{OffreFidelites} pour les \emph{Adherents}.
+\par
+Parmi les autre \textbf{Design Pattern} utilisés nous avons le design \textbf{State} pour les statuts des \emph{Personnes}.
+En effet, nous devions laisser la possibilité aux \emph{Personnes} de changer de \emph{Statut} en cours d'exécution, rendant ce design indispensable.
+\par
+Un autre \textbf{Design Pattern} que nous utilisons est celui de l'\textbf{Observer}.
+Il consiste en une classe qui en ``observe'' une autre.
+Ainsi, lors d'un changement de l'instance de cette classe, l'\textbf{Observer} associé effectuera une suite d'actions prédéfinies.
+Dans notre projet, la classe \emph{Alerte} est un \textbf{Observer} sur la classe \emph{Panier}.
+Lors d'un changement de celui-ci, l'\emph{Alerte} affichera un message.
+\par
+Enfin nous avons fait le choix d'une liaison faible entre les \emph{Produits} et les \emph{Offres} afin que la modification d'une offre n'impacte pas le produit en lui même.
+En effet, une offre doit connaitre le produit sur lequel elle s'applique, mais le contraire n'est pas vrai.
+De plus, cela évite qu'un changement dans les \emph{Offres} ne produise une erreurs ailleurs, améliorant la robustesse de notre programme.
+\par
+La généricité du langage Java est utilisée lors des affichages.
+En effet, chaque type de \emph{Produit} à un affichage personnalisé, tout comme les \emph{Offres}, qui est géré lors de l'exécution du programme.
+Celui-ci va chercher la bonne fonction à appeler et la définir dans la classe abstraite force la redéfinition de celle-ci dans les sous-classes.
 
+{
+Hook (le crochet) n'est pas un DP mais un idiome. Il consiste à définir une méthode template dans
+la classe du haut et à laisser les sous-classes redéfinir les méthodes virtuelles qui les
+concernent. C'est quand même une bonne habitude de programmation qui peut être citée ici,
+par exemple pour implémenter l'affichage des offres en laissant chaque classe afficher les
+spécificités (nombre de produits, ...) qui les concernent.
+}
 
 \begin{sidewaysfigure}[ht]
 	\vfill\hfill % Centrage sur la page
@@ -41,18 +98,26 @@ L'implémentation s'est faite en Java et nous devions répondre à plusieurs con
 	\caption{Diagramme de classe}
 \end{sidewaysfigure}
 
-\subsection*{Diagrammes de séquences}
+\clearpage % Force l'affichage des images flottantes avant de passer une page
+
+\section*{Diagrammes de séquences}
 
 \clearpage % Force l'affichage des images flottantes avant de passer une page
 
 \vfill
 \section*{Conclusion}
 
-Ce projet nous a permis de réfléchir à un problème concret, mettant en œuvre les connaissances acquises durant le cours.\par
-Nous avons utilisé plusieurs design pattern, afin de répondre aux différentes contraintes du sujet,
-et la généricité du langage afin que les interactions entre les objets soient le plus simple et le plus clair possible, tout en offrant une possibilité d'évolution du code.\par
+Ce projet nous a permis de réfléchir à un problème concret, mettant en œuvre les connaissances acquises durant le cours.
+\par
+Nous avons utilisé plusieurs \textbf{Design Pattern}, afin de répondre aux différentes contraintes du sujet,
+et la généricité du langage afin que les interactions entre les objets soient le plus simple et le plus clair possible, tout en offrant une possibilité d'évolution du code.
+\par
 En résumé, il s'agissait d'un exercice enrichissant qui nous aura permis d'acquérir de nouvelles connaissances.
-\vfill
 
+ \clearpage
+ 
+\section*{Annexe - Code source}
+
+%\lstinputlisting{../laFac.com/src/laFac/Contexte.java}
 
 \end{document}
