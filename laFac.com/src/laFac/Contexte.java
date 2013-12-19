@@ -112,7 +112,7 @@ public final class Contexte
 	
 	public ArrayList<Offre> getLOffreGenerale()
 	{
-		return listeOffreEmploye;
+		return listeOffreGenerale;
 	}
 	
 	public static ArrayList<Offre> getListeOffreEmploye()
