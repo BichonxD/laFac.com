@@ -14,3 +14,5 @@
 *.synctex.gz
 *.log
 *.aux
+/laFac.com/JavaApplication7/nbproject/private/
+/laFac.com/JavaApplication7/build/

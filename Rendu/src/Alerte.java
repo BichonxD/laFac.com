@@ -29,7 +29,6 @@ public class Alerte implements Observer
 	public void update(Observable arg0, Object arg1)
 	{	
 		Panier pan = (Panier) arg0;
-		System.out.println("Dans l'alerte !");
 		if(pan.getListProduits().containsAll(combinaisonProduit))
 			System.out.println("-----\nALERTE\nLe panier de " + pan.getNomProprietaire() + " contient la combinaison recherchée.");
 		if(pan.coutPanier() > seuilPanier)
