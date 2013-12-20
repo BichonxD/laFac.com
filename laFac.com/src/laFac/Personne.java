@@ -11,7 +11,7 @@ public class Personne
 	private Panier pan;
 	private static int currentID = 0;
 	
-	/** La personne est creee avec un statut de visiteur, elle doit se connecter pour changer de Statut */
+	/** La personne est créée avec un statut de visiteur, elle doit se connecter pour changer de Statut */
 	public Personne(String nom, String adresse)
 	{
 		this.nom = nom;
@@ -74,13 +74,13 @@ public class Personne
 	
 	public boolean achat(Produit prod)
 	{
-		System.out.println(nom + " ajoute a son panier : \n - " + prod.toStringPanier());
+		System.out.println(nom + " ajoute à son panier : \n - " + prod.toStringPanier());
 		return pan.ajoutProduit(prod);
 	}
 	
 	public double paiement()
 	{
-		System.out.println(nom + " passe a la caisse !");
+		System.out.println(nom + " passe à la caisse !");
 		return pan.facturation();
 	}
 	

@@ -11,7 +11,7 @@ public final class Contexte
 	private ArrayList<Offre> listeOffreEmploye;
 	private ArrayList<Offre> listeOffreFidelite;
 	private ArrayList<Alerte> listeAlerte;
-	/** Instance unique pre-initialisee */
+	/** Instance unique pré-initialisée */
 	private static Contexte INSTANCE = new Contexte();
 	private static int dateDuJour = 0;
 	
@@ -25,7 +25,7 @@ public final class Contexte
 		listeAlerte = new ArrayList<Alerte>();
 	}
 	
-	/** Point d'acces pour l'instance unique du singleton */
+	/** Point d'accès pour l'instance unique du singleton */
 	public static Contexte getInstance()
 	{
 		return INSTANCE;
@@ -60,7 +60,7 @@ public final class Contexte
 		return dateDuJour;
 	}
 	
-	/** Incremente la date de 1 et supprime toutes les Offres revolues. */
+	/** Incrémente la date de 1 et supprime toutes les Offres révolues. */
 	public void miseAJourDate()
 	{
 		dateDuJour++;
@@ -157,13 +157,13 @@ public final class Contexte
 		return ret;
 	}
 	
-	/** L'initialisation de la partie marketing consiste a initialiser les produits et offres. */
+	/** L'initialisation de la partie marketing consiste à initialiser les produits et offres. */
 	public void initMarketing()
 	{
 		/* Initialisation des produits */
-		creationLivreOffreEmployeFidelite(25, 10, "Toto a l'ecole des Charcutiers", "Toto", 0.5, 10);
+		creationLivreOffreEmployeFidelite(25, 10, "Toto à l'école des Charcutiers", "Toto", 0.5, 10);
 		creationLivreOffreEmployeFidelite(15, 2000, "Toto et Martine", "Martine", 0.5, 10);
-		creationSpectacleOffreEmployeFidelite(50, 50, "Toto est Figaro", "12 decembre 2012", 0.4, 25);
+		creationSpectacleOffreEmployeFidelite(50, 50, "Toto est Figaro", "12 décembre 2012", 0.4, 25);
 		creationSpectacleOffreEmployeFidelite(75, 250, "Toto attend Godot", "36 avril 2013", 0.4, 25);
 		creationTabletteOffreEmployeFidelite(250, 5000, 2, "Comon", 0.25, 50);
 		creationTabletteOffreEmployeFidelite(400, 5000, 3, "Gogo Gadgeto", 0.25, 200);
@@ -217,7 +217,7 @@ public final class Contexte
 		p.achat(listeProduit.get(4));
 		System.out.println("-----");
 		double paiement = p.paiement();
-		System.out.println("Le Client " + p.getId() + " a paye " + paiement + " euros.");
+		System.out.println("Le Client " + p.getId() + " a payé " + paiement + " €.");
 	}
 	
 	public static void main(String[] args)

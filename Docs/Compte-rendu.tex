@@ -8,6 +8,7 @@
 \usepackage[french]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{eurosym}
 
 % Images
 \usepackage{graphicx}
@@ -17,7 +18,7 @@
 \usepackage{listings}
 \usepackage{color}
 
-
+\newcommand{\code}[1]{\lstinputlisting[title=#1.java]{../laFac.com/src/laFac/#1.java}}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -31,6 +32,7 @@
   columns=flexible,
   basicstyle={\small\ttfamily},
   numbers=left,
+  stepnumber=5,
   numberstyle=\tiny\color{gray},
   keywordstyle=\color{blue},
   commentstyle=\color{dkgreen},
@@ -38,6 +40,18 @@
   breaklines=true,
   breakatwhitespace=true
   tabsize=4,
+  literate=
+    {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+    {à}{{\`a}}1 {è}{{\'e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ò}{{\`u}}1
+    {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ò}{{\`U}}1
+    {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+    {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+    {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+    {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+    {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+    {€}{{\euro{}}}1 {£}{{\pounds}}1
 }
 
 % Titre
@@ -102,6 +116,24 @@ spécificités (nombre de produits, ...) qui les concernent.
 
 \section*{Diagrammes de séquences}
 
+Nous avons décidé de détailler les interactions entre les classes lors la création du contexte et lors de la facturation du panier.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[scale=0.38]{creationContexte.png}
+		\caption{Diagramme de séquence de la création du contexte}
+	\end{center}
+\end{figure}
+
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[scale=0.38]{ajouteProduitFactu.png}
+		\caption{Diagramme de séquence de la facturation}
+	\end{center}
+\end{figure}
+
+
 \clearpage % Force l'affichage des images flottantes avant de passer une page
 
 \vfill
@@ -120,37 +152,37 @@ En résumé, il s'agissait d'un exercice enrichissant qui nous aura permis d'acq
 
 \subsection*{Contexte}
 % Contexte
-\lstinputlisting{../laFac.com/src/laFac/Contexte.java}
-\lstinputlisting{../laFac.com/src/laFac/Alerte.java}
+\code{Contexte}
+\code{Alerte}
 % Panier
-\lstinputlisting{../laFac.com/src/laFac/Panier.java}
+\code{Panier}
 
 \subsection*{Personnes}
 % Personnes
-\lstinputlisting{../laFac.com/src/laFac/Personne.java}
-\lstinputlisting{../laFac.com/src/laFac/NomStatut.java}
-\lstinputlisting{../laFac.com/src/laFac/Statut.java}
-\lstinputlisting{../laFac.com/src/laFac/Adherent.java}
-\lstinputlisting{../laFac.com/src/laFac/Employe.java}
-\lstinputlisting{../laFac.com/src/laFac/Visiteur.java}
+\code{Personne}
+\code{NomStatut}
+\code{Statut}
+\code{Adherent}
+\code{Employe}
+\code{Visiteur}
 
 \subsection*{Produits}
 % Produits
-\lstinputlisting{../laFac.com/src/laFac/Produit.java}
-\lstinputlisting{../laFac.com/src/laFac/NomCategorie.java}
-\lstinputlisting{../laFac.com/src/laFac/Culture.java}
-\lstinputlisting{../laFac.com/src/laFac/Hightech.java}
-\lstinputlisting{../laFac.com/src/laFac/Livres.java}
-\lstinputlisting{../laFac.com/src/laFac/Spectacles.java}
-\lstinputlisting{../laFac.com/src/laFac/Tablette.java}
+\code{Produit}
+\code{NomCategorie}
+\code{Culture}
+\code{Hightech}
+\code{Livres}
+\code{Spectacles}
+\code{Tablette}
 
 \subsection*{Offres}
 %Offres
-\lstinputlisting{../laFac.com/src/laFac/Offre.java}
-\lstinputlisting{../laFac.com/src/laFac/OffreEmploye.java}
-\lstinputlisting{../laFac.com/src/laFac/OffreFidelite.java}
-\lstinputlisting{../laFac.com/src/laFac/OffreFlash.java}
-\lstinputlisting{../laFac.com/src/laFac/OffreProduit.java}
+\code{Offre}
+\code{OffreEmploye}
+\code{OffreFidelite}
+\code{OffreFlash}
+\code{OffreProduit}
 
 
 \end{document}

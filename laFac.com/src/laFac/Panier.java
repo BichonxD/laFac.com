@@ -11,7 +11,7 @@ public class Panier extends Observable
 	
 	public Panier(Personne proprietaire)
 	{
-		// La date est fixee a aujourd'hui pour plus de simplicite
+		// La date est fixée à aujourd'hui pour plus de simplicité
 		date = "Aujourd'hui";
 		listProduits = new ArrayList<Produit>();
 		this.proprietaire = proprietaire;
@@ -74,7 +74,7 @@ public class Panier extends Observable
 			coutReductionStatut += proprietaire.getReductionFixeFidelite();
 		}
 		
-		// On presente l'addition
+		// On présente l'addition
 		System.out.println(lAddition(coutAchat, coutReductionGenerale, coutReductionStatut, ptsFidelite));
 		
 		// Avant de retourner ce que doit payer le Client on vide le panier
@@ -82,7 +82,7 @@ public class Panier extends Observable
 		return coutAchat - coutReductionGenerale - coutReductionStatut;
 	}
 	
-	/**Renvoie le cout du panier sans prendre en compte les reductions eventullement possibles.*/
+	/**Renvoie le cout du panier sans prendre en compte les réductions eventullement possibles.*/
 	public double coutPanier()
 	{
 		double coutAchat = 0;
@@ -103,7 +103,7 @@ public class Panier extends Observable
 	public String toString()
 	{
 		String s = new String();
-		s = "\n Date de creation : " + date;
+		s = "\n Date de création : " + date;
 		
 		if (listProduits.isEmpty())
 			s += "\n Panier Vide.";
@@ -131,14 +131,14 @@ public class Panier extends Observable
 			s += "\n - " + prod.toStringPanier();
 		}
 		
-		s += "\n--------------------\nTotal des Achats\t" + coutAchat + " euros";
+		s += "\n--------------------\nTotal des Achats\t" + coutAchat + " €";
 		if (coutReductionGenerale != 0)
-			s += "\nTotal des Promotions\t" + coutReductionGenerale + " euros";
+			s += "\nTotal des Promotions\t" + coutReductionGenerale + " €";
 		if (coutReductionStatut != 0)
-			s += "\nTotal des reductions grace a votre Statut\t" + coutReductionStatut + " euros";
+			s += "\nTotal des réductions grâce à votre Statut\t" + coutReductionStatut + " €";
 		if (ptsFidelite != 0)
-			s += "\nTotal des points de fidelite gagne\t" + ptsFidelite;
-		s += "\n--------------------\nTotal\t" + (coutAchat - coutReductionGenerale - coutReductionStatut) + " euros";
+			s += "\nTotal des points de fidelité gagné\t" + ptsFidelite;
+		s += "\n--------------------\nTotal\t" + (coutAchat - coutReductionGenerale - coutReductionStatut) + " €";
 		
 		return s;
 	}

@@ -2,10 +2,10 @@ package laFac;
 
 public class OffreProduit extends Offre
 {
-	// La date limite est defini en nombre de mise a jour du contexte.
+	// La date limite est défini en nombre de mise à jour du contexte.
 	private int dateExpiration;
 	
-	/** Reduction en pourcentage. Si le produit n'est pas elligible on ne l'ajoute pas a la liste de produit. */
+	/** Reduction en pourcentage. Si le produit n'est pas elligible on ne l'ajoute pas à la liste de produit. */
 	public OffreProduit(Produit prod, double reduction, int dateExpiration)
 	{
 		super(reduction);

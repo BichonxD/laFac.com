@@ -14,6 +14,6 @@ public class Spectacles extends Culture
 	
 	public String toString()
 	{
-		return "SPECTACLE : \nTitre : " + titre + "\nDate de representation : " + date + "\n" + super.toString();
+		return "SPECTACLE : \nTitre : " + titre + "\nDate de représentation : " + date + "\n" + super.toString();
 	}
 }

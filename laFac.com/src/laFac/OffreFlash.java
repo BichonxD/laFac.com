@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class OffreFlash extends Offre
 {
-	// La date limite est defini en nombre de mise a jour du contexte.
+	// La date limite est défini en nombre de mise à jour du contexte.
 	private int dateExpiration;
 	
 	/** Reduction en pourcentage. */
